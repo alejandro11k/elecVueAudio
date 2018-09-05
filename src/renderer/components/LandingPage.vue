@@ -1,6 +1,7 @@
 <template>
   <div id="wrapper">
     <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
+    <demo1></demo1>
     <main>
       <div class="left-side">
         <span class="title">
@@ -31,10 +32,14 @@
 
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
+  import Demo1 from './demo1'
 
   export default {
     name: 'landing-page',
-    components: { SystemInformation },
+    components: {
+      SystemInformation,
+      Demo1
+    },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)

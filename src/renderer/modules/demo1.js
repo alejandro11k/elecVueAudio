@@ -44,13 +44,31 @@ Demo1.prototype.times = function (times, space) {
   }
 }
 
+Demo1.prototype.getOscillator = function () {
+  return this.oscillator
+}
+
+Demo1.prototype.destroyOsc = function () {
+  this.oscillator = null
+  this.oscillator = new OscillatorNode(this.context)
+}
+
 Demo1.prototype.trigger = function () {
+  this.oscillator.start()
   this.currentTime = this.context.currentTime
   console.log(this.currentTime)
-  this.oscillator.frequency.setValueAtTime(200, this.currentTime)
+  this.oscillator.frequency.setValueAtTime(150, this.currentTime)
   this.gainNode.gain.setValueAtTime(0.8, this.currentTime)
   this.oscillator.frequency.exponentialRampToValueAtTime(0.01, this.currentTime + 0.5)
   this.gainNode.gain.exponentialRampToValueAtTime(0.01, this.currentTime + 0.5)
+  while (this.context.currentTime < this.currentTime + 0.55) {
+  }
+  this.gainNode.disconnect(this.context.destination)
+  this.oscillator.disconnect(this.gainNode)
+  this.destroyOsc()
+  this.oscillator.connect(this.gainNode)
+  this.gainNode.connect(this.context.destination)
+  /*
   for (let i = 1; i < 10; i++) {
     this.currentTime = this.context.currentTime
     console.log(this.currentTime)
@@ -62,6 +80,7 @@ Demo1.prototype.trigger = function () {
     this.oscillator.frequency.exponentialRampToValueAtTime(0.01, this.currentTime + 0.5)
     this.gainNode.gain.exponentialRampToValueAtTime(0.01, this.currentTime + 0.5)
   }
+  */
 }
 
 export default new Demo1()

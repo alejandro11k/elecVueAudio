@@ -1,6 +1,7 @@
 <template>
     <div class="doc">
-        <div class="title"> Pitch! </div>
+        <div class="title"> </div>
+        <br>
         <button @click="open()"> on/off </button>
         <button @click="times()"> times </button>
     </div>
@@ -11,7 +12,7 @@
     export default {
       data () {
         var on = false
-        var first = true
+        var first = false
         return {
           on: on,
           first: first
@@ -25,9 +26,9 @@
             Demo1.getOscillator().start()
             Demo1.getOscillator().type = 'sine'
             Demo1.getOscillator().frequency.value = 220
-            Demo1.pulse()
+            Demo1.trigger()
           } else {
-            Demo1.pulse()
+            Demo1.trigger()
           }
         },
         times () {

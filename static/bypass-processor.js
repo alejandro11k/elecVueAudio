@@ -1,8 +1,9 @@
 class BypassProcessor extends AudioWorkletProcessor {
+
     constructor() {
       super();
     }
-  
+
     process(inputs, outputs) {
       let input = inputs[0];
       let output = outputs[0];

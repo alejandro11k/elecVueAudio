@@ -4,6 +4,7 @@
         <br>
         <button @click="open()"> on/off </button>
         <button @click="times()"> times </button>
+        <button @click="kicktimes()"> kick times </button>
     </div>
 </template>
 
@@ -33,6 +34,9 @@
         },
         times () {
           Demo1.times(10, 1)
+        },
+        kicktimes () {
+          Demo1.kicktimes(10, 0.01)
         }
       }
     }
